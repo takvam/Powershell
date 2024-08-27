@@ -21,9 +21,9 @@ try {
 catch [Microsoft.ActiveDirectory.Management.ADIdentityResolutionException] {
     Write-Host "User does not exist."
     $UserExists = $false
-    New-ADUser -DisplayName $username -UserPrincipalName $username -Surname $last -GivenName $first -EmailAddress $email -Name "$first $last" -Instance $users
-    Get-ADPrincipalGroupMembership $users[0]
 }
+
+New-ADUser -DisplayName $username -UserPrincipalName $username -Surname $last -GivenName $first -EmailAddress $email -Name "$first $last" -Instance $users Get-ADPrincipalGroupMembership $users[0]
 
 ## Create a function to generate a random pw
 function New-RandomPassword {
